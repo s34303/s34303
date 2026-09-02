@@ -3,111 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ธีรโชติ ศรีวง | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Engineering Portfolio - Natthaphon Chiangrang">
+    <title>Engineering Portfolio | Natthaphon Chiangrang</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #29443d, #355f52, #29443d);
+        }
+
+        /* Blueprint Grid Background */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-40px, -40px); }
+        }
+
+        /* Engineering Background Circles */
+        .circle {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .circle1 {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            left: -200px;
+            animation: rotateSlow 40s linear infinite;
+        }
+
+        .circle2 {
+            width: 350px;
+            height: 350px;
+            bottom: -150px;
+            right: -150px;
+            animation: rotateSlow 30s linear infinite reverse;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Lights */
+        .light {
+            position: absolute;
+            top: -100px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 10px white, 0 0 20px #b8ffe0, 0 0 35px #7fffd4;
+            animation: fall linear infinite, twinkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .l1 { left: 5%; animation-duration: 12s; }
+        .l2 { left: 15%; animation-duration: 18s; }
+        .l3 { left: 25%; animation-duration: 15s; }
+        .l4 { left: 35%; animation-duration: 20s; }
+        .l5 { left: 45%; animation-duration: 13s; }
+        .l6 { left: 55%; animation-duration: 17s; }
+        .l7 { left: 65%; animation-duration: 14s; }
+        .l8 { left: 75%; animation-duration: 19s; }
+        .l9 { left: 85%; animation-duration: 16s; }
+        .l10 { left: 95%; animation-duration: 21s; }
+
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(110vh); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* Card Container */
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            animation: fadeUp 1s ease;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border: 2px solid #2f4f4f;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(rgba(120, 255, 200, 0.25), transparent 70%);
+            top: -150px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        /* Corner Brackets */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+        }
+
+        .tl { top: 10px; left: 10px; border-top: 3px solid #2f4f4f; border-left: 3px solid #2f4f4f; }
+        .tr { top: 10px; right: 10px; border-top: 3px solid #2f4f4f; border-right: 3px solid #2f4f4f; }
+        .bl { bottom: 10px; left: 10px; border-bottom: 3px solid #2f4f4f; border-left: 3px solid #2f4f4f; }
+        .br { bottom: 10px; right: 10px; border-bottom: 3px solid #2f4f4f; border-right: 3px solid #2f4f4f; }
+
+        .icon { font-size: 75px; margin-bottom: 10px; }
+
+        .badge {
+            display: inline-block;
+            margin: 10px 0 15px;
+            padding: 8px 20px;
+            background: #2f4f4f;
+            color: white;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        h1 { color: #2f4f4f; }
+
+        .line {
+            width: 100px;
+            height: 4px;
+            background: #2f4f4f;
+            margin: 15px auto 25px;
+            border-radius: 2px;
+        }
+
+        .info {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .highlight {
+            color: #2f4f4f;
+            font-weight: 700;
+        }
+
+        /* Filter Tags / Buttons */
+        .tags {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .tag {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            background: #2f4f4f;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            background: #476f6f;
+        }
+
+        .tag.active {
+            background: #5d8b8b;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Dynamic Info Box */
+        .info-box {
+            margin-top: 25px;
+            background: #f4f7f6;
+            padding: 20px;
+            border-left: 5px solid #2f4f4f;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+
+        .info-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Next Page Navigation Button */
+        .next-btn-container {
+            margin-top: 30px;
+        }
+
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #2f4f4f, #355f52);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 18px rgba(47, 79, 79, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:hover {
+            background: linear-gradient(135deg, #355f52, #476f6f);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(47, 79, 79, 0.4);
+        }
+
+        .next-btn span {
+            transition: transform 0.3s ease;
+        }
+
+        .next-btn:hover span {
+            transform: translateX(5px);
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card { padding: 25px; }
+            .icon { font-size: 55px; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
 </head>
-
 <body>
-    
-    <!-- เมนู -->
-    <nav>
-        <h2>ธีรโชติ</h2>
 
-        <div>
-            <a href="#home">หน้าหลัก</a>
-            <a href="#about">เกี่ยวกับ</a>
-            <a href="#works">ผลงาน</a>
-            <a href="#contact">ติดต่อ</a>
-        </div>
-    </nav>
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
 
+    <div class="light l1"></div>
+    <div class="light l2"></div>
+    <div class="light l3"></div>
+    <div class="light l4"></div>
+    <div class="light l5"></div>
+    <div class="light l6"></div>
+    <div class="light l7"></div>
+    <div class="light l8"></div>
+    <div class="light l9"></div>
+    <div class="light l10"></div>
 
-    <!-- หน้าแรก -->
-    <section id="home" class="hero">
-        <div>
-            <p>PORTFOLIO</p>
-            <h1>ธีรโชติ ศรีวง</h1>
-            <h3>นักเรียนที่สนใจด้านวิศวกรรมและเทคโนโลยี</h3>
+    <main class="card">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
 
-            <a class="button" href="#works">ดูผลงาน</a>
-        </div>
+        <div class="icon">⚙️🏗️🧪</div>
+        <div class="badge">ENGINEERING STUDENT</div>
+        
+        <h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน</h1>
+        <div class="line"></div>
 
-        <!-- เปลี่ยนรูปตรงนี้ -->
-        <img src="Kao.jpg" alt="รูปของธีรโชติ">
-    </section>
-
-
-    <!-- เกี่ยวกับ -->
-    <section id="about">
-        <h2>เกี่ยวกับฉัน</h2>
-
-        <p>
-            สวัสดีครับ ผมชื่อ ธีรโชติ ศรีวง
-            เป็นนักเรียนที่สนใจด้านเทคโนโลยี การออกแบบ
-            และการพัฒนาเว็บไซต์
+        <p class="info">
+            สวัสดีครับ! ผมชื่อ <span class="highlight">ธีรโชติ ศรีวงศ์(Natthaphon Chiangrang)</span>
         </p>
+        <p class="info">ขณะนี้กำลังศึกษาและสนใจด้าน Engineering</p>
+        <p class="info">นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages</p>
 
-        <div class="info">
-            <div>
-                <b>ชื่อ</b>
-                <p>ธีรโชติ ศรีวง</p>
-            </div>
-
-            <div>
-                <b>ความสนใจ</b>
-                <p>วิศวกรรม / เทคโนโลยี</p>
-            </div>
-
-            <div>
-                <b>งานอดิเรก</b>
-                <p>เขียนเว็บไซต์ / เรียนรู้สิ่งใหม่</p>
-            </div>
+        <div class="tags">
+            <button class="tag" onclick="showInfo('engineering', event)">⚙️ Engineering</button>
+            <button class="tag" onclick="showInfo('civil', event)">🏗️ Civil</button>
+            <button class="tag" onclick="showInfo('chemical', event)">🧪 Chemical</button>
+            <button class="tag" onclick="showInfo('design', event)">📐 Design</button>
+            <button class="tag" onclick="showInfo('problem', event)">🔧 Problem Solving</button>
         </div>
-    </section>
 
-
-    <!-- ผลงาน -->
-    <section id="works">
-        <h2>ผลงานของฉัน</h2>
-
-        <div class="works">
-
-            <div class="card">
-                <img src="work1.jpg" alt="ผลงานที่ 1">
-                <h3>ผลงานที่ 1</h3>
-                <p>รายละเอียดผลงานของฉัน</p>
-            </div>
-
-            <div class="card">
-                <img src="work2.jpg" alt="ผลงานที่ 2">
-                <h3>ผลงานที่ 2</h3>
-                <p>รายละเอียดผลงานของฉัน</p>
-            </div>
-
-            <div class="card">
-                <img src="work3.jpg" alt="ผลงานที่ 3">
-                <h3>ผลงานที่ 3</h3>
-                <p>รายละเอียดผลงานของฉัน</p>
-            </div>
-
+        <div id="infoBox" class="info-box show">
+            เลือกหัวข้อด้านบนเพื่อดูรายละเอียด
         </div>
-    </section>
 
+        <!-- ปุ่มสำหรับไปยัง portfolio.html -->
+        <div class="next-btn-container">
+            <a href="portfolio.html" class="next-btn">
+                เข้าสู่ Portfolio <span>➔</span>
+            </a>
+        </div>
 
-    <!-- ติดต่อ -->
-    <section id="contact">
-        <h2>ติดต่อ</h2>
+        <footer class="footer">
+            Building Knowledge • Creating Innovation
+        </footer>
+    </main>
 
-        <p>Email: your@email.com</p>
-        <p>Facebook: Facebook ของคุณ</p>
-        <p>Instagram: Instagram ของคุณ</p>
-    </section>
+    <script>
+        const content = {
+            engineering: "⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง",
+            civil: "🏗️ Civil Engineering เกี่ยวข้องกับการออกแบบและก่อสร้างอาคาร ถนน สะพาน เขื่อน และโครงสร้างพื้นฐาน",
+            chemical: "🧪 Chemical Engineering มุ่งเน้นกระบวนการผลิต การแปรรูปวัตถุดิบ และอุตสาหกรรมเคมี",
+            design: "📐 Design คือการออกแบบ วางแผน และพัฒนาระบบหรือโครงสร้างให้มีประสิทธิภาพและปลอดภัย",
+            problem: "🔧 Problem Solving คือหัวใจของงานวิศวกรรมในการวิเคราะห์และแก้ปัญหาอย่างเป็นระบบ"
+        };
 
+        function showInfo(type, event) {
+            const btn = event.currentTarget;
 
-    <footer>
-        © 2026 ธีรโชติ ศรีวง
-    </footer>
+            document.querySelectorAll('.tag').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
+            const box = document.getElementById('infoBox');
+            box.classList.remove('show');
+
+            setTimeout(() => {
+                box.innerHTML = content[type];
+                box.classList.add('show');
+            }, 150);
+        }
+    </script>
 </body>
 </html>
