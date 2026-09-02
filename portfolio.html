@@ -1,198 +1,326 @@
-/* ===== พื้นฐาน ===== */
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Projects - Natthaphon Chiangrang">
+    <title>แฟ้มสะสมงาน | Natthaphon Chiangrang</title>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-html {
-    scroll-behavior: smooth;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    color: #172033;
-    line-height: 1.7;
-}
+        body {
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #29443d, #355f52, #29443d);
+        }
 
+        /* Blueprint Grid Background */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+        }
 
-/* ===== เมนู ===== */
+        @keyframes gridMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-40px, -40px); }
+        }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        /* Background Circles */
+        .circle {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
 
-    padding: 20px 8%;
-    background: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
+        .circle1 {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            left: -200px;
+            animation: rotateSlow 40s linear infinite;
+        }
 
-nav h2 {
-    color: #2563eb;
-}
+        .circle2 {
+            width: 350px;
+            height: 350px;
+            bottom: -150px;
+            right: -150px;
+            animation: rotateSlow 30s linear infinite reverse;
+        }
 
-nav a {
-    color: #172033;
-    text-decoration: none;
-    margin-left: 25px;
-}
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
+        /* Floating Lights */
+        .light {
+            position: absolute;
+            top: -100px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 10px white, 0 0 20px #b8ffe0, 0 0 35px #7fffd4;
+            animation: fall linear infinite, twinkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
 
-/* ===== ส่วนต่าง ๆ ===== */
+        .l1 { left: 5%; animation-duration: 12s; }
+        .l2 { left: 15%; animation-duration: 18s; }
+        .l3 { left: 25%; animation-duration: 15s; }
+        .l4 { left: 35%; animation-duration: 20s; }
+        .l5 { left: 45%; animation-duration: 13s; }
+        .l6 { left: 55%; animation-duration: 17s; }
+        .l7 { left: 65%; animation-duration: 14s; }
+        .l8 { left: 75%; animation-duration: 19s; }
+        .l9 { left: 85%; animation-duration: 16s; }
+        .l10 { left: 95%; animation-duration: 21s; }
 
-section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 90px 8%;
-}
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(110vh); }
+        }
 
-section h2 {
-    margin-bottom: 25px;
-    font-size: 32px;
-}
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
 
+        /* Main Card Container */
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 850px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            animation: fadeUp 1s ease;
+        }
 
-/* ===== หน้าแรก ===== */
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border: 2px solid #2f4f4f;
+            border-radius: 12px;
+            pointer-events: none;
+        }
 
-.hero {
-    min-height: 90vh;
+        /* Corner Brackets */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+        }
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 50px;
-}
+        .tl { top: 10px; left: 10px; border-top: 3px solid #2f4f4f; border-left: 3px solid #2f4f4f; }
+        .tr { top: 10px; right: 10px; border-top: 3px solid #2f4f4f; border-right: 3px solid #2f4f4f; }
+        .bl { bottom: 10px; left: 10px; border-bottom: 3px solid #2f4f4f; border-left: 3px solid #2f4f4f; }
+        .br { bottom: 10px; right: 10px; border-bottom: 3px solid #2f4f4f; border-right: 3px solid #2f4f4f; }
 
-.hero h1 {
-    font-size: 60px;
-    color: #2563eb;
-}
+        h1 {
+            color: #2f4f4f;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
 
-.hero h3 {
-    font-weight: normal;
-    margin-bottom: 30px;
-}
+        .subtitle {
+            color: #555;
+            font-size: 1.05rem;
+        }
 
-.hero img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 30px;
-}
+        .line {
+            width: 100px;
+            height: 4px;
+            background: #2f4f4f;
+            margin: 15px auto 30px;
+            border-radius: 2px;
+        }
 
+        /* Project Cards List */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
 
-/* ===== ปุ่ม ===== */
+        .project-card {
+            background: #f4f7f6;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #2f4f4f;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-.button {
-    display: inline-block;
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            background: #eef3f1;
+        }
 
-    padding: 10px 25px;
-    border-radius: 10px;
+        .project-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #2f4f4f;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
 
-    background: #2563eb;
-    color: white;
-    text-decoration: none;
-}
+        .project-card h3 {
+            color: #2f4f4f;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
 
+        .project-card p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
 
-/* ===== ข้อมูล ===== */
+        /* Back Button Navigation */
+        .btn-container {
+            margin-top: 35px;
+        }
 
-.info {
-    display: flex;
-    gap: 20px;
-    margin-top: 30px;
-}
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: #2f4f4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(47, 79, 79, 0.3);
+            transition: all 0.3s ease;
+        }
 
-.info div {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    flex: 1;
-}
+        .back-btn:hover {
+            background: #476f6f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(47, 79, 79, 0.4);
+        }
 
+        .back-btn span {
+            transition: transform 0.3s ease;
+        }
 
-/* ===== ผลงาน ===== */
+        .back-btn:hover span {
+            transform: translateX(-4px);
+        }
 
-.works {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+        .footer {
+            margin-top: 25px;
+            color: #666;
+            font-size: 0.9rem;
+        }
 
-.card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-}
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
+        @media (max-width: 768px) {
+            .card { padding: 25px 20px; }
+            h1 { font-size: 1.7rem; }
+            .project-card { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
 
-.card h3,
-.card p {
-    padding: 5px 20px;
-}
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
 
+    <div class="light l1"></div>
+    <div class="light l2"></div>
+    <div class="light l3"></div>
+    <div class="light l4"></div>
+    <div class="light l5"></div>
+    <div class="light l6"></div>
+    <div class="light l7"></div>
+    <div class="light l8"></div>
+    <div class="light l9"></div>
+    <div class="light l10"></div>
 
-/* ===== ติดต่อ ===== */
+    <main class="card">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
 
-#contact {
-    text-align: center;
-}
+        <h1>📁 แฟ้มสะสมงาน (Portfolio)</h1>
+        <p class="subtitle">พื้นที่รวบรวมผลงาน โครงงาน และกิจกรรมที่ภาคภูมิใจ</p>
+        <div class="line"></div>
 
+        <section class="project-list">
+            <!-- กล่องผลงานชิ้นที่ 1 -->
+            <article class="project-card">
+                <span class="project-tag">PROJECT</span>
+                <h3>1. โครงงาน / ชิ้นงานวิทยาศาสตร์คำนวณ</h3>
+                <p><strong>รายละเอียดชิ้นงาน:</strong> เขียนอธิบายสั้น ๆ ว่าทำเกี่ยวกับอะไร ใช้ทักษะด้านไหน และได้เรียนรู้อะไรจากโครงงานนี้บ้าง</p>
+            </article>
 
-/* ===== Footer ===== */
+            <!-- กล่องผลงานชิ้นที่ 2 -->
+            <article class="project-card">
+                <span class="project-tag">ACTIVITY & CERTIFICATE</span>
+                <h3>2. กิจกรรม / เกียรติบัตรที่ได้รับ</h3>
+                <p><strong>รายละเอียดกิจกรรม:</strong> การเข้าร่วมการแข่งขัน การอบรม หรือกิจกรรมส่งเสริมทักษะวิศวกรรมของโรงเรียน/สถาบันต่าง ๆ</p>
+            </article>
+        </section>
 
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #172033;
-    color: white;
-}
+        <!-- ปุ่มกดกลับหน้าแรก -->
+        <div class="btn-container">
+            <a href="index.html" class="back-btn">
+                <span>⬅</span> กลับหน้าแรก
+            </a>
+        </div>
 
+        <footer class="footer">
+            Building Knowledge • Creating Innovation
+        </footer>
+    </main>
 
-/* ===== มือถือ ===== */
-
-@media (max-width: 700px) {
-
-    nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    nav a {
-        margin: 5px;
-    }
-
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .info,
-    .works {
-        grid-template-columns: 1fr;
-        display: grid;
-    }
-
-}
-
-body {
-    font-family: "Kanit", sans-serif;
-}
-
-h1, h2, h3 {
-    font-family: "Space Grotesk", "Kanit", sans-serif;
-}
+</body>
+</html>
