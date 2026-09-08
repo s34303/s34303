@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Portfolio - Teerachot Sriwong">
+    <title>โปรไฟล์ | Teerachot Sriwong</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+
+    <div class="light l1"></div>
+    <div class="light l2"></div>
+    <div class="light l3"></div>
+    <div class="light l4"></div>
+    <div class="light l5"></div>
+    <div class="light l6"></div>
+    <div class="light l7"></div>
+    <div class="light l8"></div>
+    <div class="light l9"></div>
+    <div class="light l10"></div>
+
+
+    <!-- Main Profile -->
+    <main class="card">
+
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+
+        <!-- Profile Image -->
+        <div class="profile-image">
+            <img src="Kao.jpg" alt="รูปโปรไฟล์ Teerachot Sriwong">
+        </div>
+
+
+        <!-- Status -->
+        <div class="badge">
+            ENGINEERING STUDENT
+        </div>
+
+
+        <!-- Name -->
+        <h1>
+            ธีรโชติ ศรีวงศ์
+        </h1>
+
+        <p class="english-name">
+            Teerachot Sriwong
+        </p>
+
+        <div class="line"></div>
+
+
+        <!-- About -->
+        <section class="about">
+
+            <h2>👨‍🎓 เกี่ยวกับฉัน</h2>
+
+            <p>
+                สวัสดีครับ ผมชื่อ
+                <span class="highlight">ธีรโชติ ศรีวงศ์</span>
+            </p>
+
+            <p>
+                เป็นนักเรียนที่สนใจด้าน Engineering
+                และการนำความรู้ทางวิทยาศาสตร์ คณิตศาสตร์
+                และเทคโนโลยีมาประยุกต์ใช้ในการแก้ปัญหา
+            </p>
+
+        </section>
+
+
+        <!-- Skills -->
+        <section class="skills">
+
+            <h2>💡 ความสนใจและทักษะ</h2>
+
+            <div class="tags">
+
+                <button class="tag"
+                    onclick="showInfo('engineering', event)">
+                    ⚙️ Engineering
+                </button>
+
+                <button class="tag"
+                    onclick="showInfo('civil', event)">
+                    🏗️ Civil
+                </button>
+
+                <button class="tag"
+                    onclick="showInfo('design', event)">
+                    📐 Design
+                </button>
+
+                <button class="tag"
+                    onclick="showInfo('problem', event)">
+                    🔧 Problem Solving
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Dynamic Info -->
+        <div id="infoBox" class="info-box show">
+            เลือกหัวข้อด้านบนเพื่อดูรายละเอียด
+        </div>
+
+
+        <!-- Portfolio Button -->
+        <div class="next-btn-container">
+
+            <a href="portfolio.html" class="next-btn">
+                📁 เข้าสู่ Portfolio
+                <span>➔</span>
+            </a>
+
+        </div>
+
+
+        <footer class="footer">
+            Building Knowledge • Creating Innovation
+        </footer>
+
+    </main>
+
+
+    <script>
+
+        const content = {
+
+            engineering:
+                "⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง",
+
+            civil:
+                "🏗️ Civil Engineering เกี่ยวข้องกับการออกแบบและก่อสร้างอาคาร ถนน สะพาน เขื่อน และโครงสร้างพื้นฐาน",
+
+            design:
+                "📐 Design คือการออกแบบ วางแผน และพัฒนาระบบหรือโครงสร้างให้มีประสิทธิภาพและปลอดภัย",
+
+            problem:
+                "🔧 Problem Solving คือหัวใจของงานวิศวกรรมในการวิเคราะห์และแก้ปัญหาอย่างเป็นระบบ"
+
+        };
+
+
+        function showInfo(type, event) {
+
+            const btn = event.currentTarget;
+
+            document
+                .querySelectorAll('.tag')
+                .forEach(b => b.classList.remove('active'));
+
+            btn.classList.add('active');
+
+            const box = document.getElementById('infoBox');
+
+            box.classList.remove('show');
+
+            setTimeout(() => {
+
+                box.innerHTML = content[type];
+
+                box.classList.add('show');
+
+            }, 150);
+
+        }
+
+    </script>
+
+</body>
+</html>
