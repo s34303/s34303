@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เป้าหมายการศึกษา | Teerachot Sriwong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-main: #ff4081; --pink-dark: #c2185b; --pink-light: #ffe4ec;
+            --bg-light: #fff5f8; --card-bg: rgba(255, 255, 255, 0.94); --text-main: #2d2d3a; --text-muted: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-light) 100%);
+            color: var(--text-main);
+        }
+
+        .card {
+            position: relative; z-index: 10; width: 100%; max-width: 800px;
+            background: var(--card-bg); border-radius: 20px; padding: 40px;
+            backdrop-filter: blur(12px); border: 1px solid rgba(255, 64, 129, 0.25);
+            box-shadow: 0 10px 35px rgba(255, 64, 129, 0.12);
+        }
+
+        .corner {
+            position: absolute; width: 20px; height: 20px; pointer-events: none;
+            filter: drop-shadow(0 0 3px var(--pink-main));
+        }
+        .tl { top: 12px; left: 12px; border-top: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .tr { top: 12px; right: 12px; border-top: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+        .bl { bottom: 12px; left: 12px; border-bottom: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .br { bottom: 12px; right: 12px; border-bottom: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+
+        h1 { font-size: 2rem; color: var(--pink-dark); text-align: center; margin-bottom: 25px; }
+
+        .target-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-bottom: 35px; }
+        .target-card {
+            background: #ffffff; border: 1px solid rgba(255, 64, 129, 0.25);
+            border-left: 5px solid var(--pink-main); border-radius: 12px; padding: 22px;
+            transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(255, 64, 129, 0.06);
+        }
+        .target-card:hover {
+            background: #fff0f5; transform: translateY(-4px); box-shadow: 0 6px 20px rgba(255, 64, 129, 0.15);
+        }
+        .target-badge {
+            display: inline-block; padding: 4px 14px; background: var(--pink-light);
+            border: 1px solid var(--pink-main); border-radius: 15px; font-size: 0.8rem;
+            font-weight: 600; color: var(--pink-dark); margin-bottom: 12px;
+        }
+        .target-card h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 6px; }
+        .faculty-sub { font-size: 0.95rem; color: var(--pink-dark); margin-bottom: 10px; font-weight: 600; }
+        .university-name { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+        .nav-btns { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+            border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;
+        }
+        .btn-secondary { background: #ffffff; border: 1px solid var(--pink-main); color: var(--pink-dark); }
+        .btn-primary { background: linear-gradient(135deg, #ff4081, #d81b60); color: #ffffff; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3); }
+
+        @media (max-width: 600px) {
+            .card { padding: 25px 20px; }
+            .target-grid { grid-template-columns: 1fr; }
+            .nav-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+
+        <h1>🎓 คณะและมหาวิทยาลัยที่อยากเข้า</h1>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <span class="target-badge">อันดับ 1</span>
+                <h3>คณะวิศวกรรมศาสตร์</h3>
+                <p class="faculty-sub">สาขาวิศวกรรมโยธา</p>
+                <p class="university-name">🏛️ จุฬาลงกรณ์มหาวิทยาลัย (CU)</p>
+            </div>
+
+            <div class="target-card">
+                <span class="target-badge">อันดับ 2</span>
+                <h3>คณะวิศวกรรมศาสตร์</h3>
+                <p class="faculty-sub">สาขาวิศวกรรมโยธา</p>
+                <p class="university-name">🏛️ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง (KMITL)</p>
+            </div>
+        </div>
+
+        <div class="nav-btns">
+            <a href="skills.html" class="btn btn-secondary">⬅ กลับหน้า ทักษะ</a>
+            <a href="portfolio.html" class="btn btn-primary">ไปหน้า Portfolio ➔</a>
+        </div>
+    </main>
+</body>
+</html>
