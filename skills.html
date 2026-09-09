@@ -22,7 +22,7 @@
         }
 
         .card {
-            position: relative; z-index: 10; width: 100%; max-width: 800px;
+            position: relative; z-index: 10; width: 100%; max-width: 850px;
             background: var(--card-bg); border-radius: 20px; padding: 40px;
             backdrop-filter: blur(12px); border: 1px solid rgba(255, 64, 129, 0.25);
             box-shadow: 0 10px 35px rgba(255, 64, 129, 0.12);
@@ -39,11 +39,11 @@
 
         h1 { font-size: 2rem; color: var(--pink-dark); text-align: center; margin-bottom: 25px; }
 
-        .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 25px; }
+        .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
         .tag-btn {
             background: #ffffff; border: 1px solid var(--pink-main); color: var(--pink-dark);
-            padding: 12px 22px; border-radius: 25px; cursor: pointer; font-family: inherit;
-            font-size: 1rem; font-weight: 600; transition: all 0.3s ease;
+            padding: 10px 18px; border-radius: 25px; cursor: pointer; font-family: inherit;
+            font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;
         }
         .tag-btn:hover, .tag-btn.active {
             background: var(--pink-main); color: #ffffff; transform: translateY(-2px);
@@ -51,10 +51,10 @@
         }
 
         .info-box {
-            background: #fff0f5; padding: 22px; border-left: 4px solid var(--pink-main);
-            border-radius: 12px; min-height: 90px; display: flex; align-items: center;
-            justify-content: center; text-align: center; font-size: 1.05rem; margin-bottom: 35px;
-            transition: all 0.3s ease; opacity: 1;
+            background: #fff0f5; padding: 25px; border-left: 4px solid var(--pink-main);
+            border-radius: 12px; min-height: 110px; display: flex; align-items: center;
+            justify-content: center; text-align: center; font-size: 1.05rem; line-height: 1.6;
+            margin-bottom: 35px; transition: all 0.3s ease; opacity: 1;
         }
 
         .nav-btns { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
@@ -81,13 +81,15 @@
 
         <div class="tags">
             <button class="tag-btn active" onclick="showInfo('engineering', event)">⚙️ Engineering</button>
-            <button class="tag-btn" onclick="showInfo('civil', event)">🏗️ Civil</button>
-            <button class="tag-btn" onclick="showInfo('design', event)">📐 Design</button>
+            <button class="tag-btn" onclick="showInfo('civil', event)">🏗️ Civil Engineering</button>
+            <button class="tag-btn" onclick="showInfo('design', event)">📐 Structural Design & CAD</button>
+            <button class="tag-btn" onclick="showInfo('math', event)">📊 Math & Analysis</button>
             <button class="tag-btn" onclick="showInfo('problem', event)">🔧 Problem Solving</button>
+            <button class="tag-btn" onclick="showInfo('teamwork', event)">🤝 Leadership & Teamwork</button>
         </div>
 
         <div id="infoBox" class="info-box">
-            ⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง
+            ⚙️ <strong>Engineering:</strong> การประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อพัฒนาเทคโนโลยีและนวัตกรรมในการแก้ปัญหาในโลกจริง
         </div>
 
         <div class="nav-btns">
@@ -98,10 +100,12 @@
 
     <script>
         const content = {
-            engineering: "⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง",
-            civil: "🏗️ Civil Engineering เกี่ยวข้องกับการออกแบบและก่อสร้างอาคาร ถนน สะพาน เขื่อน และโครงสร้างพื้นฐาน",
-            design: "📐 Design คือการออกแบบ วางแผน และพัฒนาระบบหรือโครงสร้างให้มีประสิทธิภาพและปลอดภัย",
-            problem: "🔧 Problem Solving คือหัวใจของงานวิศวกรรมในการวิเคราะห์และแก้ปัญหาอย่างเป็นระบบ"
+            engineering: "⚙️ <strong>Engineering:</strong> การประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อพัฒนาเทคโนโลยีและนวัตกรรมในการแก้ปัญหาในโลกจริง",
+            civil: "🏗️ <strong>Civil Engineering:</strong> มีความสนใจเป็นพิเศษในงานออกแบบ ก่อสร้าง และการวางแผนโครงสร้างพื้นฐาน เช่น อาคาร สะพาน และระบบคมนาคม",
+            design: "📐 <strong>Structural Design & CAD:</strong> ทักษะการเขียนแบบและออกแบบทางวิศวกรรม เช่น AutoCAD, SketchUp และการทำโมเดล 3 มิติเพื่อวิเคราะห์โครงสร้างเบื้องต้น",
+            math: "📊 <strong>Math & Analysis:</strong> มีความถนัดด้านคณิตศาสตร์ประยุกต์ ตรรกศาสตร์ และการวิเคราะห์ข้อมูลเพื่อหาโซลูชันที่ปลอดภัยและคุ้มค่าที่สุด",
+            problem: "🔧 <strong>Problem Solving:</strong> มีกระบวนการคิดวิเคราะห์อย่างเป็นระบบ (Analytical Thinking) พร้อมรับมือและแก้ไขปัญหาเฉพาะหน้าในการทำงาน",
+            teamwork: "🤝 <strong>Leadership & Teamwork:</strong> ทักษะการสื่อสาร การทำงานร่วมกับผู้อื่นในทีม และการบริหารจัดการเวลาเพื่อให้งานสำเร็จตามเป้าหมาย"
         };
 
         function showInfo(type, event) {
