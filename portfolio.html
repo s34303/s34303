@@ -1,41 +1,307 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Portfolio Projects - Teerachot Sriwong">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Projects - Teerachot Sriwong">
     <title>แฟ้มสะสมงาน | Teerachot Sriwong</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <style>
+        :root {
+            --pink-main: #ff007f;
+            --pink-glow: #ff52b4;
+            --pink-light: #ffb6c1;
+            --bg-dark: #08080d;
+            --card-bg: rgba(18, 14, 24, 0.88);
+        }
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap"
-          rel="stylesheet">
+        body {
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            background: radial-gradient(circle at center, #1b0c1e 0%, var(--bg-dark) 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
 
+        /* Cyberpunk Grid Background */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: 
+                linear-gradient(rgba(255, 0, 127, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        /* Background Animated Glows */
+        .circle {
+            position: fixed;
+            border: 2px solid rgba(255, 0, 127, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.05);
+            z-index: 0;
+        }
 
+        .circle1 {
+            width: 500px;
+            height: 500px;
+            top: -150px;
+            left: -150px;
+            border-style: dashed;
+            animation: rotateSlow 30s linear infinite;
+        }
+
+        .circle2 {
+            width: 350px;
+            height: 350px;
+            bottom: -100px;
+            right: -100px;
+            animation: rotateSlow 20s linear infinite reverse;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Ambient Lights (l1 - l10) */
+        .light {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--pink-glow) 0%, transparent 70%);
+            opacity: 0.25;
+            pointer-events: none;
+            animation: floatLight 8s infinite alternate ease-in-out;
+            z-index: 0;
+        }
+
+        .l1 { width: 130px; height: 130px; top: 8%; left: 12%; animation-delay: 0s; }
+        .l2 { width: 90px; height: 90px; top: 75%; left: 82%; animation-delay: 1s; }
+        .l3 { width: 160px; height: 160px; top: 35%; left: 88%; animation-delay: 2s; }
+        .l4 { width: 70px; height: 70px; top: 82%; left: 18%; animation-delay: 3s; }
+        .l5 { width: 110px; height: 110px; top: 15%; left: 75%; animation-delay: 4s; }
+        .l6 { width: 95px; height: 95px; top: 62%; left: 8%; animation-delay: 2.5s; }
+        .l7 { width: 120px; height: 120px; top: 88%; left: 48%; animation-delay: 1.5s; }
+        .l8 { width: 75px; height: 75px; top: 12%; left: 42%; animation-delay: 3.5s; }
+        .l9 { width: 140px; height: 140px; top: 48%; left: 28%; animation-delay: 0.5s; }
+        .l10 { width: 85px; height: 85px; top: 28%; left: 92%; animation-delay: 4.5s; }
+
+        @keyframes floatLight {
+            0% { transform: translateY(0) scale(1); opacity: 0.2; }
+            100% { transform: translateY(-25px) scale(1.25); opacity: 0.45; }
+        }
+
+        /* Main Portfolio Card */
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 850px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.2);
+        }
+
+        /* Neon Corner Brackets */
+        .corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            filter: drop-shadow(0 0 4px var(--pink-main));
+        }
+
+        .tl { top: 12px; left: 12px; border-top: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .tr { top: 12px; right: 12px; border-top: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+        .bl { bottom: 12px; left: 12px; border-bottom: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .br { bottom: 12px; right: 12px; border-bottom: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--pink-main), 0 0 20px var(--pink-glow);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--pink-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .line {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--pink-main), transparent);
+            margin: 15px auto 30px;
+            box-shadow: 0 0 8px var(--pink-main);
+        }
+
+        /* Project Cards Grid */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 0, 127, 0.05);
+            border: 1px solid rgba(255, 0, 127, 0.25);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-card:hover {
+            background: rgba(255, 0, 127, 0.12);
+            border-color: var(--pink-main);
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.35);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 190px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            margin-bottom: 15px;
+            background: #000;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.06);
+        }
+
+        .project-tag {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 5px 14px;
+            background: rgba(255, 0, 127, 0.15);
+            border: 1px solid var(--pink-main);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
+            text-shadow: 0 0 5px var(--pink-main);
+        }
+
+        .project-card h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-top: auto;
+        }
+
+        .project-card strong {
+            color: var(--pink-light);
+            text-shadow: 0 0 5px var(--pink-glow);
+        }
+
+        /* Back Button - Same Gradient Neon Style as Next Button */
+        .btn-container {
+            margin-top: 10px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #ff007f, #99004d);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid #ff66b2;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #ff3399, #ff007f);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--pink-glow);
+        }
+
+        .back-btn span {
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover span {
+            transform: translateX(-5px);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .card { padding: 25px 20px; }
+            .project-list { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
 </head>
-
 
 <body>
 
-    <!-- Background -->
-
+    <!-- Background Glow Circles -->
     <div class="circle circle1"></div>
     <div class="circle circle2"></div>
 
+    <!-- Floating Neon Lights -->
     <div class="light l1"></div>
     <div class="light l2"></div>
     <div class="light l3"></div>
@@ -47,91 +313,70 @@
     <div class="light l9"></div>
     <div class="light l10"></div>
 
-
-    <!-- Portfolio -->
-
-    <main class="card portfolio-card">
+    <!-- Portfolio Main Card -->
+    <main class="card">
 
         <div class="corner tl"></div>
         <div class="corner tr"></div>
         <div class="corner bl"></div>
         <div class="corner br"></div>
 
-
-        <h1>
-            📁 แฟ้มสะสมงาน
-        </h1>
-
-        <p class="subtitle">
-            Portfolio
-        </p>
+        <h1>📁 แฟ้มสะสมงาน</h1>
+        <p class="subtitle">Portfolio</p>
 
         <div class="line"></div>
 
-<!-- Projects -->
+        <!-- Projects Grid -->
+        <section class="project-list">
 
-<section class="project-list">
+            <!-- Project 1 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="1.jpg" alt="การแข่งขันตอบปัญหาทางวิทยาศาสตร์">
+                </div>
 
-    <!-- Project 1 -->
-    <article class="project-card">
+                <span class="project-tag">
+                    Intelligence in science for a sustainable future
+                </span>
 
-        <div class="project-image">
-            <img src="1.jpg" alt="โครงงานวิทยาศาสตร์คำนวณ">
-        </div>
+                <h3>
+                    1. การแข่งขันตอบปัญหาทางวิทยาศาสตร์ ระดับมัธยมศึกษาปีที่ 6
+                </h3>
 
-        <span class="project-tag">
-            Intelligence in science for a sustainable future
-        </span>
+                <p>
+                    <strong>รายละเอียดผลงาน:</strong><br>
+                    แข่งขันการตอบคำถามทางวิทยาศาสตร์ ได้รับรางวัลชนะเลิศ ในรายการแข่งขันวิชาการ
+                </p>
+            </article>
 
-        <h3>
-            1. การแข่งขันตอบปัญหาทางวิทยาศาสตร์ ระดับมัธยมศึกษาปีที่ 6
-        </h3>
+            <!-- Project 2 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="2.jpg" alt="กิจกรรมและการแข่งขันทางคณิตศาสตร์">
+                </div>
 
-        <p>
-            <strong>รายละเอียดผลงาน:</strong>
-            แข่งขันการตอบคำถามทางวิทยาศาสตร์
-            รางวัลชนะเลิศ ในรายการ
-        </p>
+                <span class="project-tag">
+                    Psu Mathematics Competition
+                </span>
 
-    </article>
+                <h3>
+                    2. กิจกรรมและการแข่งขันทางคณิตศาสตร์
+                </h3>
 
+                <p>
+                    <strong>รายละเอียดกิจกรรม:</strong><br>
+                    การสอบแข่งขันคณิตศาสตร์ระดับประเทศ ได้รับรางวัลเหรียญทองแดง (ลำดับที่ 8 ของจังหวัดชลบุรี)
+                </p>
+            </article>
 
-    <!-- Project 2 -->
-    <article class="project-card">
+        </section>
 
-        <div class="project-image">
-            <img src="2.jpg" alt="กิจกรรมและการแข่งขัน">
-        </div>
-
-        <span class="project-tag">
-            Psu Mathematics Competition
-        </span>
-
-        <h3>
-            2. กิจกรรมและการแข่งขันทางศณิตศาสตร์
-        </h3>
-
-        <p>
-            <strong>รายละเอียดกิจกรรม:</strong>
-            การสอบแข่งขันคณิตศาสตร์ระดับประเทศ ได้รับรางวัลเหรียญทองเเดง ลำดับที่8ของจังหวัดชลบุรี
-        </p>
-
-    </article>
-
-</section>
-
-
-        <!-- Back -->
-
+        <!-- Back Button -->
         <div class="btn-container">
-
             <a href="index.html" class="back-btn">
-                <span>⬅</span>
-                กลับหน้าโปรไฟล์
+                <span>⬅</span> กลับหน้าโปรไฟล์
             </a>
-
         </div>
-
 
         <footer class="footer">
             Building Knowledge • Creating Innovation
