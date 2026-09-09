@@ -3,35 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Portfolio - Teerachot Sriwong">
     <title>โปรไฟล์ | Teerachot Sriwong</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --pink-main: #ff007f;
+            --pink-glow: #ff52b4;
+            --pink-light: #ffb6c1;
+            --bg-dark: #08080d;
+            --card-bg: rgba(18, 14, 24, 0.88);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            background: radial-gradient(circle at center, #1b0c1e 0%, var(--bg-dark) 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Cyberpunk Grid Background */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: 
+                linear-gradient(rgba(255, 0, 127, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        /* Background Animated Glows */
+        .circle {
+            position: fixed;
+            border: 2px solid rgba(255, 0, 127, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.05);
+            z-index: 0;
+        }
+
+        .circle1 {
+            width: 500px;
+            height: 500px;
+            top: -150px;
+            left: -150px;
+            border-style: dashed;
+            animation: rotateSlow 30s linear infinite;
+        }
+
+        .circle2 {
+            width: 350px;
+            height: 350px;
+            bottom: -100px;
+            right: -100px;
+            animation: rotateSlow 20s linear infinite reverse;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Main Profile Card */
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.2);
+        }
+
+        /* Neon Corner Brackets */
+        .corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            filter: drop-shadow(0 0 4px var(--pink-main));
+        }
+
+        .tl { top: 12px; left: 12px; border-top: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .tr { top: 12px; right: 12px; border-top: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+        .bl { bottom: 12px; left: 12px; border-bottom: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .br { bottom: 12px; right: 12px; border-bottom: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+
+        /* Profile Image */
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--pink-main);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px var(--pink-glow);
+        }
+
+        /* Status Badge */
+        .badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(255, 0, 127, 0.15);
+            color: #ffffff;
+            border: 1px solid var(--pink-main);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--pink-main), 0 0 20px var(--pink-glow);
+            margin-bottom: 5px;
+        }
+
+        .english-name {
+            font-size: 1.1rem;
+            color: var(--pink-light);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Social Links */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 8px 22px;
+            background: rgba(18, 14, 24, 0.9);
+            border: 1px solid var(--pink-main);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
+        }
+
+        .social-btn:hover {
+            background: var(--pink-main);
+            box-shadow: 0 0 20px var(--pink-glow);
+            transform: translateY(-2px);
+        }
+
+        .line {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--pink-main), transparent);
+            margin: 20px auto 30px;
+        }
+
+        /* About Section */
+        .about {
+            text-align: left;
+            margin-bottom: 35px;
+        }
+
+        .about h2, .skills h2 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--pink-main);
+            padding-bottom: 6px;
+            display: inline-block;
+            text-shadow: 0 0 8px var(--pink-main);
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--pink-glow);
+            border-bottom: 1px dashed var(--pink-main);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 12px;
+        }
+
+        .info-card {
+            background: rgba(255, 0, 127, 0.05);
+            border: 1px solid rgba(255, 0, 127, 0.2);
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 0, 127, 0.12);
+            border-color: var(--pink-main);
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.25);
+        }
+
+        .info-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+        }
+
+        .info-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--pink-light);
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .gpax-card {
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(18, 14, 24, 0.9));
+            border-color: var(--pink-main);
+        }
+
+        .gpax-badge {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 8px var(--pink-glow);
+        }
+
+        /* Skills Tags */
+        .skills {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag-btn {
+            background: rgba(18, 14, 24, 0.9);
+            border: 1px solid var(--pink-main);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(255, 0, 127, 0.15);
+        }
+
+        .tag-btn:hover, .tag-btn.active {
+            background: var(--pink-main);
+            box-shadow: 0 0 18px var(--pink-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Dynamic Info Box */
+        .info-box {
+            margin-top: 20px;
+            background: rgba(255, 0, 127, 0.05);
+            padding: 18px;
+            border-left: 4px solid var(--pink-main);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #f0f0f0;
+            font-size: 0.95rem;
+        }
+
+        .info-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation Button */
+        .next-btn-container {
+            margin-top: 30px;
+        }
+
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff007f, #99004d);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid #ff66b2;
+        }
+
+        .next-btn:hover {
+            background: linear-gradient(135deg, #ff3399, #ff007f);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--pink-glow);
+        }
+
+        .next-btn span {
+            transition: transform 0.3s ease;
+        }
+
+        .next-btn:hover span {
+            transform: translateX(5px);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .card { padding: 25px 20px; }
+            .info-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Background -->
+    <!-- Background Glows -->
     <div class="circle circle1"></div>
     <div class="circle circle2"></div>
-
-    <div class="light l1"></div>
-    <div class="light l2"></div>
-    <div class="light l3"></div>
-    <div class="light l4"></div>
-    <div class="light l5"></div>
-    <div class="light l6"></div>
-    <div class="light l7"></div>
-    <div class="light l8"></div>
-    <div class="light l9"></div>
-    <div class="light l10"></div>
-
 
     <!-- Main Profile -->
     <main class="card">
@@ -41,122 +407,123 @@
         <div class="corner bl"></div>
         <div class="corner br"></div>
 
-
         <!-- Profile Image -->
         <div class="profile-image">
             <img src="Kao.jpg" alt="รูปโปรไฟล์ Teerachot Sriwong">
         </div>
-
 
         <!-- Status -->
         <div class="badge">
             ENGINEERING STUDENT
         </div>
 
-
         <!-- Name -->
-        <h1>
-            ธีรโชติ ศรีวงศ์
-        </h1>
+        <h1>ธีรโชติ ศรีวงศ์</h1>
+        <p class="english-name">Teerachot Sriwong</p>
 
-        <p class="english-name">
-            Teerachot Sriwong
-        </p>
-
-         <div>
-
-            <button class="tag">
-                <a href="https://www.instagram.com/tee_.xyz/" class="tag">
-                    IG
-                </a>
-            </button>
-
-            <button class="tag">
-                <a href="https://www.facebook.com/teerachot.kup" class="tag">
-                    Facebook
-                </a>
-            </button>
-
+        <!-- Social Links -->
+        <div class="social-container">
+            <a href="https://www.instagram.com/tee_.xyz/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                📷 IG
+            </a>
+            <a href="https://www.facebook.com/teerachot.kup" target="_blank" rel="noopener noreferrer" class="social-btn">
+                📘 Facebook
+            </a>
         </div>
 
         <div class="line"></div>
 
-
-        <!-- About -->
+        <!-- About Section -->
         <section class="about">
-
             <h2>👨‍🎓 ประวัติส่วนตัว</h2>
 
-            <p>
-                สวัสดีครับ ผมชื่อ
-                <span class="highlight">ธีรโชติ ศรีวงศ์</span>
+            <p class="intro-text">
+                สวัสดีครับ ผมชื่อ <span class="highlight">ธีรโชติ ศรีวงศ์</span> (Teerachot Sriwong) ชื่อเล่น <span class="highlight">เก้า</span> (Kao)
             </p>
 
-            <p>
-                Name Teerachot Sriwong
-                ชื่อ เก้า
-                Nickname kao
-                อายุ 18 ปี
-                age 18 year old
-                วันเกิด 13\08\08
-                สัญชาติ ไทย
-                เชื้อชาติ ไทย
-                ประวัติการศึกษา โรงเรียนบ้านบึง"อุตสาหกรรมนุเคราะห์"
-                เเผนการเรียน วิทยาศาสตร์-คณิตศาสตร์(MSEP)
-                GPAX 3.91
-            </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">👤</div>
+                    <div class="info-content">
+                        <span class="info-label">ชื่อเล่น / Nickname</span>
+                        <span class="info-value">เก้า (Kao)</span>
+                    </div>
+                </div>
 
+                <div class="info-card">
+                    <div class="info-icon">🎂</div>
+                    <div class="info-content">
+                        <span class="info-label">วันเกิด / อายุ</span>
+                        <span class="info-value">13 สิงหาคม 2551 (18 ปี)</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🇹🇭</div>
+                    <div class="info-content">
+                        <span class="info-label">สัญชาติ / เชื้อชาติ</span>
+                        <span class="info-value">ไทย / ไทย</span>
+                    </div>
+                </div>
+
+                <div class="info-card full-width">
+                    <div class="info-icon">🏫</div>
+                    <div class="info-content">
+                        <span class="info-label">ประวัติการศึกษา</span>
+                        <span class="info-value">โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🧪</div>
+                    <div class="info-content">
+                        <span class="info-label">แผนการเรียน</span>
+                        <span class="info-value">วิทยาศาสตร์ - คณิตศาสตร์ (MSEP)</span>
+                    </div>
+                </div>
+
+                <div class="info-card gpax-card">
+                    <div class="info-icon">⭐</div>
+                    <div class="info-content">
+                        <span class="info-label">เกรดเฉลี่ยสะสม</span>
+                        <span class="gpax-badge">GPAX 3.91</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-
-        <!-- Skills -->
+        <!-- Skills Section -->
         <section class="skills">
-
             <h2>💡 ความสนใจและทักษะ</h2>
 
             <div class="tags">
-
-                <button class="tag"
-                    onclick="showInfo('engineering', event)">
+                <button class="tag-btn" onclick="showInfo('engineering', event)">
                     ⚙️ Engineering
                 </button>
-
-                <button class="tag"
-                    onclick="showInfo('civil', event)">
+                <button class="tag-btn" onclick="showInfo('civil', event)">
                     🏗️ Civil
                 </button>
-
-                <button class="tag"
-                    onclick="showInfo('design', event)">
+                <button class="tag-btn" onclick="showInfo('design', event)">
                     📐 Design
                 </button>
-
-                <button class="tag"
-                    onclick="showInfo('problem', event)">
+                <button class="tag-btn" onclick="showInfo('problem', event)">
                     🔧 Problem Solving
                 </button>
-
             </div>
-
         </section>
 
-
-        <!-- Dynamic Info -->
+        <!-- Dynamic Info Box -->
         <div id="infoBox" class="info-box show">
             เลือกหัวข้อด้านบนเพื่อดูรายละเอียด
         </div>
 
-
         <!-- Portfolio Button -->
         <div class="next-btn-container">
-
             <a href="portfolio.html" class="next-btn">
                 📁 เข้าสู่ Portfolio
                 <span>➔</span>
             </a>
-
         </div>
-
 
         <footer class="footer">
             Building Knowledge • Creating Innovation
@@ -164,50 +531,28 @@
 
     </main>
 
-
     <script>
-
         const content = {
-
-            engineering:
-                "⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง",
-
-            civil:
-                "🏗️ Civil Engineering เกี่ยวข้องกับการออกแบบและก่อสร้างอาคาร ถนน สะพาน เขื่อน และโครงสร้างพื้นฐาน",
-
-            design:
-                "📐 Design คือการออกแบบ วางแผน และพัฒนาระบบหรือโครงสร้างให้มีประสิทธิภาพและปลอดภัย",
-
-            problem:
-                "🔧 Problem Solving คือหัวใจของงานวิศวกรรมในการวิเคราะห์และแก้ปัญหาอย่างเป็นระบบ"
-
+            engineering: "⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง",
+            civil: "🏗️ Civil Engineering เกี่ยวข้องกับการออกแบบและก่อสร้างอาคาร ถนน สะพาน เขื่อน และโครงสร้างพื้นฐาน",
+            design: "📐 Design คือการออกแบบ วางแผน และพัฒนาระบบหรือโครงสร้างให้มีประสิทธิภาพและปลอดภัย",
+            problem: "🔧 Problem Solving คือหัวใจของงานวิศวกรรมในการวิเคราะห์และแก้ปัญหาอย่างเป็นระบบ"
         };
 
-
         function showInfo(type, event) {
-
             const btn = event.currentTarget;
 
-            document
-                .querySelectorAll('.tag')
-                .forEach(b => b.classList.remove('active'));
-
+            document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             const box = document.getElementById('infoBox');
-
             box.classList.remove('show');
 
             setTimeout(() => {
-
                 box.innerHTML = content[type];
-
                 box.classList.add('show');
-
             }, 150);
-
         }
-
     </script>
 
 </body>
