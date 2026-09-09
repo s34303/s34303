@@ -202,7 +202,7 @@
             margin-bottom: 35px;
         }
 
-        .about h2, .skills h2 {
+        .about h2, .skills h2, .target-section h2 {
             font-size: 1.3rem;
             color: #ffffff;
             margin-bottom: 20px;
@@ -343,6 +343,69 @@
             transform: translateY(0);
         }
 
+        /* Target Faculty Section */
+        .target-section {
+            text-align: left;
+            margin-top: 35px;
+            margin-bottom: 25px;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .target-card {
+            background: rgba(255, 0, 127, 0.05);
+            border: 1px solid rgba(255, 0, 127, 0.25);
+            border-left: 4px solid var(--pink-main);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .target-card:hover {
+            background: rgba(255, 0, 127, 0.12);
+            border-color: var(--pink-main);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+        }
+
+        .target-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            background: rgba(255, 0, 127, 0.2);
+            border: 1px solid var(--pink-main);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--pink-light);
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px var(--pink-main);
+        }
+
+        .target-card h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+            text-shadow: 0 0 6px rgba(255, 0, 127, 0.5);
+        }
+
+        .faculty-sub {
+            font-size: 0.9rem;
+            color: var(--pink-light);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .university-name {
+            font-size: 0.88rem;
+            color: #d1d1d1;
+            line-height: 1.4;
+        }
+
         /* Navigation Button */
         .next-btn-container {
             margin-top: 30px;
@@ -387,7 +450,7 @@
 
         @media (max-width: 600px) {
             .card { padding: 25px 20px; }
-            .info-grid { grid-template-columns: 1fr; }
+            .info-grid, .target-grid { grid-template-columns: 1fr; }
             h1 { font-size: 1.8rem; }
         }
     </style>
@@ -454,7 +517,7 @@
                     <div class="info-icon">🎂</div>
                     <div class="info-content">
                         <span class="info-label">วันเกิด / อายุ</span>
-                        <span class="info-value">13 สิงหาคม 2551 (18 ปี)</span>
+                        <span class="info-value">30 สิงหาคม 2551 (18 ปี)</span>
                     </div>
                 </div>
 
@@ -516,6 +579,27 @@
         <div id="infoBox" class="info-box show">
             เลือกหัวข้อด้านบนเพื่อดูรายละเอียด
         </div>
+
+        <!-- Target Faculty & University Section -->
+        <section class="target-section">
+            <h2>🎓 คณะและมหาวิทยาลัยที่อยากเข้า</h2>
+
+            <div class="target-grid">
+                <div class="target-card">
+                    <span class="target-badge">อันดับ 1</span>
+                    <h3>คณะวิศวกรรมศาสตร์</h3>
+                    <p class="faculty-sub">สาขาวิศวกรรมโยธา</p>
+                    <p class="university-name">🏛️ จุฬาลงกรณ์มหาวิทยาลัย (CU)</p>
+                </div>
+
+                <div class="target-card">
+                    <span class="target-badge">อันดับ 2</span>
+                    <h3>คณะวิศวกรรมศาสตร์</h3>
+                    <p class="faculty-sub">สาขาวิศวกรรมโยธา </p>
+                    <p class="university-name">🏛️ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง (KMITL)</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Portfolio Button -->
         <div class="next-btn-container">
