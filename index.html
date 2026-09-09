@@ -12,11 +12,14 @@
 
     <style>
         :root {
-            --pink-main: #ff007f;
-            --pink-glow: #ff52b4;
-            --pink-light: #ffb6c1;
-            --bg-dark: #08080d;
-            --card-bg: rgba(18, 14, 24, 0.88);
+            --pink-main: #ff4081;
+            --pink-dark: #c2185b;
+            --pink-glow: rgba(255, 64, 129, 0.35);
+            --pink-light: #ffe4ec;
+            --bg-light: #fff5f8;
+            --card-bg: rgba(255, 255, 255, 0.94);
+            --text-main: #2d2d3a;
+            --text-muted: #666666;
         }
 
         * {
@@ -33,19 +36,19 @@
             align-items: center;
             padding: 40px 20px;
             position: relative;
-            background: radial-gradient(circle at center, #1b0c1e 0%, var(--bg-dark) 100%);
-            color: #ffffff;
+            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-light) 100%);
+            color: var(--text-main);
             overflow-x: hidden;
         }
 
-        /* Cyberpunk Grid Background */
+        /* Subtle Pink Grid Background */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             background: 
-                linear-gradient(rgba(255, 0, 127, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
+                linear-gradient(rgba(255, 64, 129, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 64, 129, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: 0;
         }
@@ -53,10 +56,10 @@
         /* Background Animated Glows */
         .circle {
             position: fixed;
-            border: 2px solid rgba(255, 0, 127, 0.15);
+            border: 2px solid rgba(255, 64, 129, 0.15);
             border-radius: 50%;
             pointer-events: none;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.05);
+            box-shadow: 0 0 25px rgba(255, 64, 129, 0.08);
             z-index: 0;
         }
 
@@ -93,8 +96,8 @@
             padding: 40px;
             text-align: center;
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 0, 127, 0.3);
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.2);
+            border: 1px solid rgba(255, 64, 129, 0.25);
+            box-shadow: 0 10px 35px rgba(255, 64, 129, 0.12);
         }
 
         /* Neon Corner Brackets */
@@ -103,7 +106,7 @@
             width: 20px;
             height: 20px;
             pointer-events: none;
-            filter: drop-shadow(0 0 4px var(--pink-main));
+            filter: drop-shadow(0 0 3px var(--pink-main));
         }
 
         .tl { top: 12px; left: 12px; border-top: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
@@ -125,41 +128,42 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--pink-main);
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
+            box-shadow: 0 0 20px rgba(255, 64, 129, 0.25);
             transition: transform 0.3s ease;
         }
 
         .profile-image img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 35px var(--pink-glow);
+            box-shadow: 0 0 30px var(--pink-glow);
         }
 
         /* Status Badge */
         .badge {
             display: inline-block;
             padding: 6px 18px;
-            background: rgba(255, 0, 127, 0.15);
-            color: #ffffff;
+            background: var(--pink-light);
+            color: var(--pink-dark);
             border: 1px solid var(--pink-main);
             border-radius: 30px;
             font-size: 0.85rem;
+            font-weight: 600;
             letter-spacing: 2px;
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 64, 129, 0.15);
             margin-bottom: 15px;
         }
 
         h1 {
             font-size: 2.2rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px var(--pink-main), 0 0 20px var(--pink-glow);
+            color: var(--pink-dark);
             margin-bottom: 5px;
         }
 
         .english-name {
             font-size: 1.1rem;
-            color: var(--pink-light);
+            color: var(--pink-main);
             margin-bottom: 15px;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         /* Social Links */
@@ -173,19 +177,21 @@
         .social-btn {
             display: inline-block;
             padding: 8px 22px;
-            background: rgba(18, 14, 24, 0.9);
+            background: #ffffff;
             border: 1px solid var(--pink-main);
-            color: #ffffff;
+            color: var(--pink-dark);
             text-decoration: none;
             border-radius: 25px;
             font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
+            box-shadow: 0 2px 6px rgba(255, 64, 129, 0.1);
         }
 
         .social-btn:hover {
             background: var(--pink-main);
-            box-shadow: 0 0 20px var(--pink-glow);
+            color: #ffffff;
+            box-shadow: 0 0 15px var(--pink-glow);
             transform: translateY(-2px);
         }
 
@@ -204,25 +210,23 @@
 
         .about h2, .skills h2, .target-section h2 {
             font-size: 1.3rem;
-            color: #ffffff;
+            color: var(--pink-dark);
             margin-bottom: 20px;
             border-bottom: 2px solid var(--pink-main);
             padding-bottom: 6px;
             display: inline-block;
-            text-shadow: 0 0 8px var(--pink-main);
         }
 
         .intro-text {
             font-size: 1.05rem;
-            color: #e0e0e0;
+            color: var(--text-main);
             margin-bottom: 20px;
             line-height: 1.6;
         }
 
         .highlight {
-            color: #ffffff;
+            color: var(--pink-dark);
             font-weight: 700;
-            text-shadow: 0 0 8px var(--pink-glow);
             border-bottom: 1px dashed var(--pink-main);
         }
 
@@ -234,21 +238,22 @@
         }
 
         .info-card {
-            background: rgba(255, 0, 127, 0.05);
-            border: 1px solid rgba(255, 0, 127, 0.2);
+            background: #ffffff;
+            border: 1px solid rgba(255, 64, 129, 0.2);
             border-radius: 10px;
             padding: 12px 16px;
             display: flex;
             align-items: center;
             gap: 12px;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(255, 64, 129, 0.05);
         }
 
         .info-card:hover {
-            background: rgba(255, 0, 127, 0.12);
+            background: #fff0f5;
             border-color: var(--pink-main);
             transform: translateY(-2px);
-            box-shadow: 0 0 12px rgba(255, 0, 127, 0.25);
+            box-shadow: 0 4px 12px rgba(255, 64, 129, 0.15);
         }
 
         .info-card.full-width {
@@ -266,25 +271,24 @@
 
         .info-label {
             font-size: 0.8rem;
-            color: var(--pink-light);
+            color: var(--pink-dark);
         }
 
         .info-value {
             font-size: 0.95rem;
-            color: #ffffff;
+            color: var(--text-main);
             font-weight: 600;
         }
 
         .gpax-card {
-            background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(18, 14, 24, 0.9));
+            background: linear-gradient(135deg, var(--pink-light), #ffffff);
             border-color: var(--pink-main);
         }
 
         .gpax-badge {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 8px var(--pink-glow);
+            color: var(--pink-dark);
         }
 
         /* Skills Tags */
@@ -301,28 +305,30 @@
         }
 
         .tag-btn {
-            background: rgba(18, 14, 24, 0.9);
+            background: #ffffff;
             border: 1px solid var(--pink-main);
-            color: #ffffff;
+            color: var(--pink-dark);
             padding: 10px 18px;
             border-radius: 25px;
             cursor: pointer;
             font-family: inherit;
             font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 0 8px rgba(255, 0, 127, 0.15);
+            box-shadow: 0 2px 6px rgba(255, 64, 129, 0.08);
         }
 
         .tag-btn:hover, .tag-btn.active {
             background: var(--pink-main);
-            box-shadow: 0 0 18px var(--pink-glow);
+            color: #ffffff;
+            box-shadow: 0 0 15px var(--pink-glow);
             transform: translateY(-2px);
         }
 
         /* Dynamic Info Box */
         .info-box {
             margin-top: 20px;
-            background: rgba(255, 0, 127, 0.05);
+            background: #fff0f5;
             padding: 18px;
             border-left: 4px solid var(--pink-main);
             border-radius: 10px;
@@ -334,8 +340,10 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #f0f0f0;
+            color: var(--text-main);
             font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(255, 64, 129, 0.08);
         }
 
         .info-box.show {
@@ -358,51 +366,50 @@
         }
 
         .target-card {
-            background: rgba(255, 0, 127, 0.05);
-            border: 1px solid rgba(255, 0, 127, 0.25);
+            background: #ffffff;
+            border: 1px solid rgba(255, 64, 129, 0.25);
             border-left: 4px solid var(--pink-main);
             border-radius: 12px;
             padding: 18px;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 8px rgba(255, 64, 129, 0.06);
         }
 
         .target-card:hover {
-            background: rgba(255, 0, 127, 0.12);
+            background: #fff0f5;
             border-color: var(--pink-main);
             transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.15);
         }
 
         .target-badge {
             display: inline-block;
             padding: 3px 12px;
-            background: rgba(255, 0, 127, 0.2);
+            background: var(--pink-light);
             border: 1px solid var(--pink-main);
             border-radius: 15px;
             font-size: 0.75rem;
-            color: var(--pink-light);
+            font-weight: 600;
+            color: var(--pink-dark);
             margin-bottom: 10px;
-            text-shadow: 0 0 5px var(--pink-main);
         }
 
         .target-card h3 {
             font-size: 1.15rem;
-            color: #ffffff;
+            color: var(--text-main);
             margin-bottom: 6px;
-            text-shadow: 0 0 6px rgba(255, 0, 127, 0.5);
         }
 
         .faculty-sub {
             font-size: 0.9rem;
-            color: var(--pink-light);
+            color: var(--pink-dark);
             margin-bottom: 8px;
             font-weight: 600;
         }
 
         .university-name {
             font-size: 0.88rem;
-            color: #d1d1d1;
+            color: var(--text-muted);
             line-height: 1.4;
         }
 
@@ -416,21 +423,21 @@
             align-items: center;
             gap: 10px;
             padding: 12px 30px;
-            background: linear-gradient(135deg, #ff007f, #99004d);
+            background: linear-gradient(135deg, #ff4081, #d81b60);
             color: #ffffff;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
             font-size: 1rem;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
             transition: all 0.3s ease;
-            border: 1px solid #ff66b2;
+            border: 1px solid #ff80ab;
         }
 
         .next-btn:hover {
-            background: linear-gradient(135deg, #ff3399, #ff007f);
+            background: linear-gradient(135deg, #ff80ab, #ff4081);
             transform: translateY(-2px);
-            box-shadow: 0 0 30px var(--pink-glow);
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
         }
 
         .next-btn span {
@@ -443,7 +450,7 @@
 
         .footer {
             margin-top: 30px;
-            color: #777;
+            color: #888888;
             font-size: 0.85rem;
             letter-spacing: 1px;
         }
@@ -472,7 +479,7 @@
 
         <!-- Profile Image -->
         <div class="profile-image">
-            <img src="IMG_0790.jpeg" alt="รูปโปรไฟล์ Teerachot Sriwong">
+            <img src="Kao.jpg" alt="รูปโปรไฟล์ Teerachot Sriwong">
         </div>
 
         <!-- Status -->
