@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ความสนใจ & ทักษะ | Teerachot Sriwong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-main: #ff4081; --pink-dark: #c2185b; --pink-light: #ffe4ec;
+            --bg-light: #fff5f8; --card-bg: rgba(255, 255, 255, 0.94); --text-main: #2d2d3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-light) 100%);
+            color: var(--text-main);
+        }
+
+        .card {
+            position: relative; z-index: 10; width: 100%; max-width: 800px;
+            background: var(--card-bg); border-radius: 20px; padding: 40px;
+            backdrop-filter: blur(12px); border: 1px solid rgba(255, 64, 129, 0.25);
+            box-shadow: 0 10px 35px rgba(255, 64, 129, 0.12);
+        }
+
+        .corner {
+            position: absolute; width: 20px; height: 20px; pointer-events: none;
+            filter: drop-shadow(0 0 3px var(--pink-main));
+        }
+        .tl { top: 12px; left: 12px; border-top: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .tr { top: 12px; right: 12px; border-top: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+        .bl { bottom: 12px; left: 12px; border-bottom: 3px solid var(--pink-main); border-left: 3px solid var(--pink-main); }
+        .br { bottom: 12px; right: 12px; border-bottom: 3px solid var(--pink-main); border-right: 3px solid var(--pink-main); }
+
+        h1 { font-size: 2rem; color: var(--pink-dark); text-align: center; margin-bottom: 25px; }
+
+        .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 25px; }
+        .tag-btn {
+            background: #ffffff; border: 1px solid var(--pink-main); color: var(--pink-dark);
+            padding: 12px 22px; border-radius: 25px; cursor: pointer; font-family: inherit;
+            font-size: 1rem; font-weight: 600; transition: all 0.3s ease;
+        }
+        .tag-btn:hover, .tag-btn.active {
+            background: var(--pink-main); color: #ffffff; transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(255, 64, 129, 0.35);
+        }
+
+        .info-box {
+            background: #fff0f5; padding: 22px; border-left: 4px solid var(--pink-main);
+            border-radius: 12px; min-height: 90px; display: flex; align-items: center;
+            justify-content: center; text-align: center; font-size: 1.05rem; margin-bottom: 35px;
+            transition: all 0.3s ease; opacity: 1;
+        }
+
+        .nav-btns { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+            border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;
+        }
+        .btn-secondary { background: #ffffff; border: 1px solid var(--pink-main); color: var(--pink-dark); }
+        .btn-primary { background: linear-gradient(135deg, #ff4081, #d81b60); color: #ffffff; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3); }
+
+        @media (max-width: 600px) {
+            .card { padding: 25px 20px; }
+            .nav-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+
+        <h1>💡 ความสนใจและทักษะ</h1>
+
+        <div class="tags">
+            <button class="tag-btn active" onclick="showInfo('engineering', event)">⚙️ Engineering</button>
+            <button class="tag-btn" onclick="showInfo('civil', event)">🏗️ Civil</button>
+            <button class="tag-btn" onclick="showInfo('design', event)">📐 Design</button>
+            <button class="tag-btn" onclick="showInfo('problem', event)">🔧 Problem Solving</button>
+        </div>
+
+        <div id="infoBox" class="info-box">
+            ⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง
+        </div>
+
+        <div class="nav-btns">
+            <a href="about.html" class="btn btn-secondary">⬅ กลับหน้า ประวัติส่วนตัว</a>
+            <a href="target.html" class="btn btn-primary">ไปหน้า เป้าหมายการศึกษา ➔</a>
+        </div>
+    </main>
+
+    <script>
+        const content = {
+            engineering: "⚙️ Engineering คือการประยุกต์ใช้วิทยาศาสตร์ คณิตศาสตร์ และความคิดสร้างสรรค์เพื่อแก้ปัญหาในโลกจริง",
+            civil: "🏗️ Civil Engineering เกี่ยวข้องกับการออกแบบและก่อสร้างอาคาร ถนน สะพาน เขื่อน และโครงสร้างพื้นฐาน",
+            design: "📐 Design คือการออกแบบ วางแผน และพัฒนาระบบหรือโครงสร้างให้มีประสิทธิภาพและปลอดภัย",
+            problem: "🔧 Problem Solving คือหัวใจของงานวิศวกรรมในการวิเคราะห์และแก้ปัญหาอย่างเป็นระบบ"
+        };
+
+        function showInfo(type, event) {
+            const btn = event.currentTarget;
+            document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const box = document.getElementById('infoBox');
+            box.style.opacity = '0';
+            setTimeout(() => {
+                box.innerHTML = content[type];
+                box.style.opacity = '1';
+            }, 150);
+        }
+    </script>
+</body>
+</html>
